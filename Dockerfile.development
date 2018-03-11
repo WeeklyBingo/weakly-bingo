@@ -1,6 +1,7 @@
 FROM node:latest AS base
 WORKDIR /app
 COPY package.json .
+COPY package-lock.json .
 
 FROM node:latest AS build
 RUN npm install
