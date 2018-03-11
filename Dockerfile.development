@@ -1,13 +1,16 @@
 FROM node:latest AS base
 WORKDIR /app
-COPY package.json .
-COPY package-lock.json .
 
 FROM node:latest AS build
+WORKDIR /app
+COPY package.json .
+COPY package-lock.json .
 RUN npm install
 
 FROM base AS final
+WORKDIR /app
+COPY --from=build /app/node_modules ./node_modules
 COPY . .
 EXPOSE 3000
-ENTRYPOINT ["npm", "run start"]
+ENTRYPOINT npm start
 
