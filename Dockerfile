@@ -15,4 +15,4 @@ COPY --from=build /app/node_modules ./node_modules
 COPY . .
 RUN npm run prestart:prod
 EXPOSE 3000
-ENTRYPOINT npm start
+ENTRYPOINT npm run start:prod
