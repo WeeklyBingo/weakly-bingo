@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  web.api:
+    image: weakly-bingo/web.api:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: ./Dockerfile.development
+    ports:
+      - "5000:80"
+    depends_on:
+      - db
+    networks:
+      - backend
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+        - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - backend
+
+volumes:
+  db:
+    external: true
+
+networks:
+  backend:
