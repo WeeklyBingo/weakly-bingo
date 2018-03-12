@@ -3,6 +3,11 @@ version: '3.3'
 services:
   web.api:
     image: weakly-bingo/web.api:${TAG:-latest}
+    environment:
+      - POSTGRES_PORT=5432
+      - POSTGRES_HOST=db
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
     build:
       context: .
       dockerfile: ./Dockerfile.development
