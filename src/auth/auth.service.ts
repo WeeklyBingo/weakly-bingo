@@ -22,7 +22,7 @@ export class AuthService implements IAuthService {
         return new Promise<AuthToken>((resolve, reject)=> {
             this.userService.getUserByLogin(loginDto.login).then((user: User)=> {    
                 if (user.password == loginDto.password) {
-                    let expiresIn = '48h', secretOrKey = "12345";
+                    let expiresIn = process.env.JWT_TOKEN_EXPIRE, secretOrKey = process.env.JWT_SECRET;
                     let payload = { login: loginDto.login };
                     let token = sign(payload, secretOrKey, { expiresIn });
                     resolve({token: token, expiresIn: expiresIn});

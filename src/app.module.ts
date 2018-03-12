@@ -5,7 +5,6 @@ import { UserModule } from "./users/users.module"
 
 @Module({
   imports: [UserModule, AuthModule],
-  controllers: [AppController],
-  components: [],
+  controllers: [AppController]
 })
 export class ApplicationModule {}

@@ -3,21 +3,17 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { Component, Inject, Dependencies } from '@nestjs/common';
 import { AuthService, IAuthService } from '../auth.service';
 
-
 @Component()
 export class JwtStrategy extends Strategy {
 
-    private authService: IAuthService;
+  constructor(private readonly authService: AuthService) {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      passReqToCallback: true,
+      secretOrKey: process.env.JWT_SECRET,
+    }, async (req, payload, next) => await this.verify(req, payload, next));
 
-    constructor(authService: AuthService) {
-        super({
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            passReqToCallback: true,
-            secretOrKey: "12345",
-        },
-        async (req, payload, next) => await this.verify(req, payload, next),
-        );
-        passport.use(this);
+    passport.use(this);
   }
 
   public async verify(req, payload, done) {

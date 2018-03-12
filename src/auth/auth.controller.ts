@@ -4,13 +4,8 @@ import { AuthService, IAuthService } from "./auth.service"
 import { AuthToken } from '../domain/AuthToken';
 
 @Controller("auth")
-@Dependencies([AuthService])
 export class AuthController {
-    private authService:IAuthService;
-
-    constructor(authService: IAuthService) {
-        this.authService = authService;
-    }
+    constructor(private readonly authService: AuthService) {}
     
     @Post("authenticate")
     public async authenticate(@Body() loginRequest: LoginRequest) {
