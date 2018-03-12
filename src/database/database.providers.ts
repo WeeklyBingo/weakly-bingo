@@ -10,5 +10,9 @@ export const databaseProviders = [
             username: process.env.POSTGRES_USERNAME || "postgres",
             password: process.env.POSTGRES_PASSWORD || "postgres",
         }),
+        entities: [
+            __dirname + "/../**/*.entity{.ts,.js}"
+        ],
+        autoSchemaSync: true,
     },
 ];
