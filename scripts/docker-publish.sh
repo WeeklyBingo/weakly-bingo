@@ -14,7 +14,7 @@ esac
 
 docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
-docker build -f ./Dockerfile.$DOCKER_ENV -t fibon-api:$DOCKER_TAG . --no-cache
+docker build -f ./Dockerfile.$DOCKER_ENV -t web.api:$DOCKER_TAG . --no-cache
 
 docker tag web.api:$DOCKER_TAG $DOCKER_USERNAME/web.api:$DOCKER_TAG
 
