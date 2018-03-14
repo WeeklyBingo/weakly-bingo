@@ -7,6 +7,7 @@
     "start": "node index.js",
     "dev": "JWT_SECRET='dev_12345' JWT_TOKEN_EXPIRE='8h' node index.js",
     "dev:docker":"cd scripts && fake.sh run -t DockerBuild:Dev",
+    "dev:external": "docker-compose -f docker-compose.external.yml up -d --build && npm run start:watch",
     "prod:docker":"cd scripts && fake.sh run -t DockerBuild:Prod",
     "prod:dockerpush":"cd scripts && fake.sh run -t DockerPush:Travis",
     "prod": "JWT_SECRET='9sj210jf82kf0k2fksa12j4212nasuna89as98sa7f9as' JWT_TOKEN_EXPIRE='48h' node dist/main.js",
