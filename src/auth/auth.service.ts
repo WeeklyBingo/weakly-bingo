@@ -1,8 +1,8 @@
-import { User } from "../domain/User"
+import { User } from "../user/user.entity"
 import { AuthToken } from "../domain/AuthToken"
 import { Component, Inject, Dependencies } from "@nestjs/common";
 import { LoginRequest } from "../domain/LoginRequest"
-import { IUserService, UserService } from "../users/users.service";
+import { IUserService, UserService } from "../user/user.service";
 import { sign } from 'jsonwebtoken';
 
 export interface IAuthService {

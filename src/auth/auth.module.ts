@@ -7,7 +7,7 @@ import {
 import * as passport from 'passport';
 import { AuthService } from "./auth.service"
 import { AuthController } from "./auth.controller"
-import { UserModule } from "../users/users.module";
+import { UserModule } from "../user/user.module";
 import { JwtStrategy } from "./passport/jwt.strategy"
 
 @Module({
